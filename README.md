@@ -1,7 +1,9 @@
 # Example Flask Application
 
-- Two node Flask Application that provides an API to query a list of Starwars Quotes
-- `api` is the container used to host the Starwars API
+[![Build Status](https://dev.azure.com/gallowst/docker/_build/latest?definitionId=20&branchName=master)](https://dev.azure.com/gallowst/docker/_build/latest?definitionId=20&branchName=master)
+
+- Two node Flask Application that provides an API to query a list of Example Quotes
+- `api` is the container used to host the Example API
 - `app` is the container used to query the API and provide a dynamic web page with the results
 
 ## API Container
