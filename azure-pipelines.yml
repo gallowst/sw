@@ -26,12 +26,22 @@ stages:
         containerRegistry: 'dockerhub'
         command: 'login'
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build the API image
       inputs:
         command: buildAndPush
-        dockerfile: '**/Dockerfile'
+        dockerfile: 'api/Dockerfile'
         containerRegistry: 'dockerhub'
         repository: 'gallows/sw'
         tags: |
-          $(tag)
-          latest
+          $(tag)-api
+          api
+    - task: Docker@2
+      displayName: Build the App image
+      inputs:
+        command: buildAndPush
+        dockerfile: 'app/Dockerfile'
+        containerRegistry: 'dockerhub'
+        repository: 'gallows/sw'
+        tags: |
+          $(tag)-app
+          app
