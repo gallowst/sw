@@ -1,6 +1,14 @@
 # Build a Docker image 
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
+schedules:
+- cron: "0 23 * * 0"
+  displayName: "Weekly Sunday build"
+  branches:
+    include:
+    - master
+  always: "true"
+
 trigger:
 - master
 
