@@ -39,6 +39,8 @@ stages:
       displayName: Build the Api image
       inputs:
         command: build
+        containerRegistry: 'dockerhub'
+        repository: '$(imageName)'
         dockerfile: 'api/Dockerfile'
         tags: |
           $(tag)-api
@@ -48,6 +50,8 @@ stages:
       displayName: Build the App image
       inputs:
         command: build
+        containerRegistry: 'dockerhub'
+        repository: '$(imageName)'
         dockerfile: 'app/Dockerfile'
         tags: |
           $(tag)-app
@@ -72,7 +76,7 @@ stages:
       condition: 'always()'
 
     - task: Docker@2
-      displayName: Push the tagged image
+      displayName: Push the tagged images
       inputs:
         containerRegistry: 'dockerhub'
         repository: '$(imageName)'
@@ -80,3 +84,5 @@ stages:
         tags: |
           $(tag)-api
           $(tag)-app
+          app
+          api
