@@ -17,6 +17,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  imageName: 'gallows/sw'
 
 stages:
 - stage: Build
@@ -33,23 +34,49 @@ stages:
       inputs:
         containerRegistry: 'dockerhub'
         command: 'login'
+    
     - task: Docker@2
-      displayName: Build the API image
+      displayName: Build the Api image
       inputs:
-        command: buildAndPush
+        command: build
         dockerfile: 'api/Dockerfile'
-        containerRegistry: 'dockerhub'
-        repository: 'gallows/sw'
         tags: |
           $(tag)-api
           api
+    
     - task: Docker@2
       displayName: Build the App image
       inputs:
-        command: buildAndPush
+        command: build
         dockerfile: 'app/Dockerfile'
-        containerRegistry: 'dockerhub'
-        repository: 'gallows/sw'
         tags: |
           $(tag)-app
           app
+
+    - task: CmdLine@2
+      displayName: Scan
+      inputs:
+        script: |
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml -q gallows/sw:$(tag)-api
+          cp $PWD/junit-report.xml $(Build.ArtifactStagingDirectory)/junit-api-report.xml
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml -q gallows/sw:$(tag)-app
+          cp $PWD/junit-report.xml $(Build.ArtifactStagingDirectory)/junit-app-report.xml
+
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/junit-*.xml'
+        mergeTestResults: true
+        failTaskOnFailedTests: true
+        testRunTitle: 'Trivy'
+      condition: 'always()'
+
+    - task: Docker@2
+      displayName: Push the tagged image
+      inputs:
+        containerRegistry: 'dockerhub'
+        repository: '$(imageName)'
+        command: 'push'
+        tags: |
+          $(tag)-api
+          $(tag)-app
