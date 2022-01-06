@@ -61,9 +61,9 @@ stages:
       displayName: Scan
       inputs:
         script: |
-          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy image --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml -q gallows/sw:$(tag)-api
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy image --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml --no-progress gallows/sw:$(tag)-api
           cp $PWD/junit-report.xml $(Build.ArtifactStagingDirectory)/junit-api-report.xml
-          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy image --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml -q gallows/sw:$(tag)-app
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy image --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml --no-progress gallows/sw:$(tag)-app
           cp $PWD/junit-report.xml $(Build.ArtifactStagingDirectory)/junit-app-report.xml
 
     - task: PublishTestResults@2
