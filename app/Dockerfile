@@ -1,5 +1,6 @@
 FROM python:alpine
 
+RUN apk upgrade expat
 RUN mkdir /app
 RUN adduser -D gunicorn
 RUN chown gunicorn:gunicorn /app
