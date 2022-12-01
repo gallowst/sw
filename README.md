@@ -1,6 +1,6 @@
 # Example Flask Application
 
-[![Build Status](https://dev.azure.com/gallowst/docker/_apis/build/status/Build%20and%20push%20starwars?branchName=master)](https://dev.azure.com/gallowst/docker/_build/latest?definitionId=20&branchName=master)
+[![Build Status](https://dev.azure.com/gallowst/docker/_apis/build/status/Build%20and%20push%20starwars?branchName=main)](https://dev.azure.com/gallowst/docker/_build/latest?definitionId=20&branchName=main)
 
 - Two node Flask Application that provides an API to query a list of Example Quotes
 - `api` is the container used to host the Example API
