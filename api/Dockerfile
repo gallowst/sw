@@ -6,7 +6,7 @@ RUN adduser -D gunicorn
 RUN chown gunicorn:gunicorn /api
 USER gunicorn
 ENV PATH="/api/bin:${PATH}"
-RUN python3 -m venv /api && source /api/bin/activate && python3 -m pip install flask gunicorn
+RUN python3 -m venv /api && source /api/bin/activate && python3 -m pip install flask gunicorn Flask-Opentracing jaeger-client
 
 COPY config.py /api
 COPY wsgi.py /api

@@ -1,7 +1,19 @@
 import flask, random, json
 from flask import Flask, render_template, Response, jsonify, request
+from jaeger_client import Config
+from flask_opentracing import FlaskTracing
 
 application = Flask(__name__,)
+config = Config(
+    config={
+        'sampler':
+        {'type': 'const',
+         'param': 1},
+                        'logging': True,
+                        'reporter_batch_size': 1,}, 
+                        service_name="service")
+jaeger_tracer = config.initialize_tracer()
+tracing = FlaskTracing(jaeger_tracer, True, app)
 
 # Load in the quotes from disk
 with open('quotes.json') as json_file:
