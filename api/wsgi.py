@@ -72,15 +72,15 @@ def api_random():
     results.append(random.choice(quotes))
     return jsonify(results)
 
-def initialise_tracer():
+def initialize_tracer():
   config = Config(
      config={ 'sampler': {'type': 'const','param': 1},
    }, 
    service_name="starwars")
   return config.initialize_tracer()
 
-flask_tracer = FlaskTracing(initialise_tracer, True, application)
+flask_tracer = FlaskTracing(initialize_tracer, True, application)
 
 if __name__ == "__main__":
   application.run()
-  flask_tracer.run()
+  flask_tracer = FlaskTracing(initialize_tracer, True, application)
