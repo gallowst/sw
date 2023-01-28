@@ -28,7 +28,9 @@ def initialize_tracer():
    service_name="starwars")
   return config.initialize_tracer()
 
-# Run the app
-if __name__ == "__main__":
-    application.run()
-    flask_tracer = FlaskTracing(initialize_tracer, True, application)
+flask_tracer = FlaskTracing(initialize_tracer, True, application)
+
+# # Run the app
+# if __name__ == "__main__":
+#     application.run()
+#     flask_tracer = FlaskTracing(initialize_tracer, True, application)

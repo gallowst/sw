@@ -81,6 +81,6 @@ def initialize_tracer():
 
 flask_tracer = FlaskTracing(initialize_tracer, True, application)
 
-if __name__ == "__main__":
-  application.run()
-  flask_tracer = FlaskTracing(initialize_tracer, True, application)
+# if __name__ == "__main__":
+#   application.run()
+#   flask_tracer = FlaskTracing(initialize_tracer, True, application)
