@@ -12,6 +12,16 @@ full_url = 'http://{url}:5000/api/v1/resources/random'.format(url=os.environ['SW
 # Set up the application
 application = Flask(__name__,)
 
+# Setup tracing
+def initialize_tracer():
+  config = Config(
+     config={ 'sampler': {'type': 'const','param': 1},
+   }, 
+   service_name="starwars")
+  return config.initialize_tracer()
+
+flask_tracer = FlaskTracing(initialize_tracer, True, application)
+
 # Define the web page
 @application.route("/")
 def index():
@@ -30,7 +40,6 @@ def initialize_tracer():
 
 flask_tracer = FlaskTracing(initialize_tracer, True, application)
 
-# # Run the app
-# if __name__ == "__main__":
-#     application.run()
-#     flask_tracer = FlaskTracing(initialize_tracer, True, application)
+# Run the app
+if __name__ == "__main__":
+    application.run()
