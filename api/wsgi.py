@@ -89,7 +89,7 @@ def api_random():
     # Create an empty list for our results
     results = []
     with jaeger_tracer.start_active_span(
-        'python webserver internal span of random method') as scope:
+        'random method') as scope:
         results.append(random.choice(quotes))
         scope.span.log_kv({'event': 'generated random trace', 'result': results})
     return jsonify(results)
