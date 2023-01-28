@@ -11,16 +11,6 @@ full_url = 'http://{url}:5000/api/v1/resources/random'.format(url=os.environ['SW
 
 # Set up the application
 application = Flask(__name__,)
-config = Config(
-    config={
-        'sampler':
-        {'type': 'const',
-         'param': 1},
-                        'logging': True,
-                        'reporter_batch_size': 1,}, 
-                        service_name="service")
-jaeger_tracer = config.initialize_tracer()
-tracing = FlaskTracing(jaeger_tracer, True, application)
 
 # Define the web page
 @application.route("/")
@@ -30,6 +20,15 @@ def index():
    full = json.loads((requests.get(full_url).text))
    # Generate the web page from the template
    return render_template('starwars.html',quote = full[0]['quote'], character = full[0]['character'], movie = full[0]['movie'], container=socket.gethostname())
+
+def initialise_tracer():
+  config = Config(
+     config={ 'sampler': {'type': 'const','param': 1},
+   }, 
+   service_name="sw-app")
+  return config.initialize_tracer()
+
+flask_tracer = FlaskTracing(initialise_tracer, True, application)
 
 # Run the app
 if __name__ == "__main__":

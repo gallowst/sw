@@ -4,16 +4,6 @@ from jaeger_client import Config
 from flask_opentracing import FlaskTracing
 
 application = Flask(__name__,)
-config = Config(
-    config={
-        'sampler':
-        {'type': 'const',
-         'param': 1},
-                        'logging': True,
-                        'reporter_batch_size': 1,}, 
-                        service_name="service")
-jaeger_tracer = config.initialize_tracer()
-tracing = FlaskTracing(jaeger_tracer, True, application)
 
 # Load in the quotes from disk
 with open('quotes.json') as json_file:
@@ -81,6 +71,15 @@ def api_random():
     results = []
     results.append(random.choice(quotes))
     return jsonify(results)
+
+def initialise_tracer():
+  config = Config(
+     config={ 'sampler': {'type': 'const','param': 1},
+   }, 
+   service_name="sw-api")
+  return config.initialize_tracer()
+
+flask_tracer = FlaskTracing(initialise_tracer, True, application)
 
 if __name__ == "__main__":
   application.run()
