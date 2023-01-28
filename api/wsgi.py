@@ -83,11 +83,15 @@ def api_movie():
         <p>Get a <a href=/api/v1/resources/random>random</a> quote</p>'''
 
 @application.route('/api/v1/resources/random', methods=['GET'])
+@tracing.trace()
 def api_random():
 
     # Create an empty list for our results
     results = []
-    results.append(random.choice(quotes))
+    with jaeger_tracer.start_active_span(
+        'python webserver internal span of random method') as scope:
+        results.append(random.choice(quotes))
+        scope.span.log_kv({'event': 'generated random trace', 'result': results})
     return jsonify(results)
 
 if __name__ == "__main__":

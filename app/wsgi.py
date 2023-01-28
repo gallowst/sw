@@ -39,15 +39,6 @@ def index():
    # Generate the web page from the template
    return render_template('starwars.html',quote = full[0]['quote'], character = full[0]['character'], movie = full[0]['movie'], container=socket.gethostname())
 
-def initialize_tracer():
-  config = Config(
-     config={ 'sampler': {'type': 'const','param': 1},
-   }, 
-   service_name="starwars")
-  return config.initialize_tracer()
-
-flask_tracer = FlaskTracing(initialize_tracer, True, application)
-
 # Run the app
 if __name__ == "__main__":
     application.run()
