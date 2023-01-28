@@ -76,10 +76,11 @@ def initialise_tracer():
   config = Config(
      config={ 'sampler': {'type': 'const','param': 1},
    }, 
-   service_name="sw-api")
+   service_name="starwars")
   return config.initialize_tracer()
 
 flask_tracer = FlaskTracing(initialise_tracer, True, application)
 
 if __name__ == "__main__":
   application.run()
+  flask_tracer.run()
