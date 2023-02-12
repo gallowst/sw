@@ -1,7 +1,5 @@
 flask
 gunicorn
-yieldfrom.urllib.request
-requests
 Flask-Opentracing
 jaeger-client
 setuptools>=65.5.1
