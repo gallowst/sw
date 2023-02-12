@@ -16,8 +16,13 @@ def index():
    """Star Wars Quote home page."""
    # Retrieve JSON document from the API server
    full = json.loads((requests.get(full_url).text))
+   # Set the Logo to Display
+   if full[0]['movie'] == "The Lord of the Rings":
+      logo = "lotr.png"
+   else:
+      logo = "starwars.png"
    # Generate the web page from the template
-   return render_template('starwars.html',quote = full[0]['quote'], character = full[0]['character'], movie = full[0]['movie'], container=socket.gethostname())
+   return render_template('starwars.html',quote = full[0]['quote'], character = full[0]['character'], movie = full[0]['movie'], container=socket.gethostname(), logo = logo)
 
 # Run the app
 if __name__ == "__main__":
