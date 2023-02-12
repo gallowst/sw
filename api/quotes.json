@@ -98,5 +98,255 @@
         "movie": "Attack of the Clones",
         "character": "Count Dooku",
         "quote": "Master Kenobi, you disappoint me. Yoda holds you in such high esteem. Surely you can do better!"
+    },
+    {
+        "quote": "\"Many that live deserve death. And some that die deserve life. Can you give it to them? Then do not be too eager to deal out death in judgement. For even the very wise cannot see all ends.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"All we have to decide is what to do with the time that is given to us.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Seldom give unguarded advice, for advice is a dangerous gift, even from the wise to the wise, and all courses may run ill.\"",
+        "character": "Gildor Inglorion",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Some things are ill to hear when the world's in shadow.\"",
+        "character": "Tom Bombadil",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Don't adventures ever have an end? I suppose not. Someone else always has to carry on the story.\"",
+        "character": "Bilbo Baggins",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"He that breaks a thing to find out what it is has left the path of wisdom.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Even the most subtle spiders may leave a weak thread.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"It is perilous to study too deeply the arts of the Enemy, for good or for ill.\"",
+        "character": "Elrond",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Oft in lies truth is hidden.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Valour needs first strength, and then a weapon.\"",
+        "character": "Boromir",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Those who made [the three elven rings of power] did not desire strength or domination or hoarded wealth, but understanding, making, and healing, to preserve all things unstained.\"",
+        "character": "Elrond",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Such is oft the course of deeds that move the wheels of the world: small hands do them because they must, while the eyes of the great are elsewhere.\"",
+        "character": "Elrond",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Only a small part is played in great deeds by any hero.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Faithless is he that says farewell when the road darkens. \"",
+        "character": "Gimli",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Let him not vow to walk in the dark, who has not seen the nightfall.\"",
+        "character": "Elrond",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"In nothing is the power of the Dark Lord more clearly shown than in the estrangement that divides all those who still oppose him.\"",
+        "character": "Haldir",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"The world is indeed full of peril, and in it there are many dark places; but still there is much that is fair, and though in all lands love is now mingled with grief, it grows perhaps the greater.\"",
+        "character": "Haldir",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Do not trouble your hearts overmuch with thought of the road tonight. Maybe the paths that you each shall tread are already laid before your feet, though you do not see them.\"",
+        "character": "Galadriel",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Do not despise the lore that has come down from distant years; for oft it may chance that old wives keep in memory word of things that once were needful for the wise to know.\"",
+        "character": "Celeborn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Do not cast all hope away. Tomorrow is unkown. Rede oft is found at the rising of the Sun.\"",
+        "character": "Legolas",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"There are some things that it is better to begin than to refuse, even though the end may be dark.\"",
+        "character": "Aragorn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"A treacherous weapon is ever a danger to the hand.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"News from afar is seldom sooth.\"",
+        "character": "King Theoden",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"The wise speak only of what they know.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"To crooked eyes truth may wear a wry face.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Oft the unbidden guest proves the best company.\"",
+        "character": "Eomer",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"None knows what the new day shall bring him. \"",
+        "character": "Aragorn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"One who cannot cast away a treasure at need is in fetters.\"",
+        "character": "Aragorn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"The treacherous are ever distrustful.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"One cannot be both tyrant and counselor.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Often does hatred hurt itself!\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Things will go as they will; and there is no need to hurry to meet them.\"",
+        "character": "Treebeard",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Oft evil will shall evil mar.\"",
+        "character": "King Theoden",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Perilous to us all are the devices of an art deeper than we possess ourselves.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"The burned hand teaches best. After that advice about fire goes to the heart.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Better mistrust undeserved than rash words.\"",
+        "character": "Frodo",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Fair speech may hide a foul heart.\"",
+        "character": "Sam Gamgee",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"The praise of the praiseworthy is above all rewards.\"",
+        "character": "Faramir",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Generous deed should not be checked by cold counsel.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"The hasty stroke goes oft astray.\"",
+        "character": "Aragorn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Deeds will not be less valiant because they are unpraised.\"",
+        "character": "Aragorn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Where will wants not, a way opens.\"",
+        "character": "Dernhelm",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"A traitor may betray himself and do good that he does not intend.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Hope oft deceives. ... Yet twice blessed is help unlooked for.\"",
+        "character": "Eomer",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"Follow what may, great deeds are not lessened in worth.\"",
+        "character": "Legolas",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"It needs but one foe to breed a war, not two.... And those who have not swords can still die upon them. Would you have the folk of Gondor gather you herbs only, when the Dark Lord gathers armies?\"",
+        "character": "Eowyn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"It is not always good to be healed in body. Nor is it always evil to die in battle, even in bitter pain.\"",
+        "character": "Eowyn",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"It is useless to meet revenge with revenge: it will heal nothing.\"",
+        "character": "Frodo",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"It must often be so, Sam, when things are in danger: some one has to give them up, lose them, so that others may keep them.\"",
+        "character": "Frodo",
+        "movie": "The Lord of the Rings"
+    },
+    {
+        "quote": "\"I will not say: do not weep; for not all tears are an evil.\"",
+        "character": "Gandalf",
+        "movie": "The Lord of the Rings"
     }
 ]
