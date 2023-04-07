@@ -4,25 +4,32 @@ import requests
 import socket
 import os
 
-# Build the URL if the API server from an env var
-full_url = 'http://{url}:5000/api/v1/resources/random'.format(url=os.environ['SW_URL'])
-
 # Set up the application
-application = Flask(__name__,)
+application = Flask(__name__)
 
 # Define the web page
 @application.route("/")
 def index():
    """Star Wars Quote home page."""
-   # Retrieve JSON document from the API server
-   full = json.loads((requests.get(full_url).text))
-   # Set the Logo to Display
-   if full[0]['movie'] == "The Lord of the Rings":
-      logo = "lotr.png"
-   else:
-      logo = "starwars.png"
-   # Generate the web page from the template
-   return render_template('starwars.html',quote = full[0]['quote'], character = full[0]['character'], movie = full[0]['movie'], container=socket.gethostname(), logo = logo)
+   try:
+       # Retrieve JSON document from the API server
+       full_url = f"http://{os.environ['SW_URL']}:5000/api/v1/resources/random"
+       response = requests.get(full_url)
+       response.raise_for_status()
+       full = response.json()
+
+       # Set the Logo to Display
+       logo = "lotr.png" if full[0]['movie'] == "The Lord of the Rings" else "starwars.png"
+
+       # Generate the web page from the template
+       return render_template('starwars.html',
+                              quote=full[0]['quote'],
+                              character=full[0]['character'],
+                              movie=full[0]['movie'],
+                              container=socket.gethostname(),
+                              logo=logo)
+   except (KeyError, requests.exceptions.RequestException) as e:
+       return str(e), 500
 
 # Run the app
 if __name__ == "__main__":

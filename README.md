@@ -5,6 +5,7 @@
 - Two node Flask Application that provides an API to query a list of Example Quotes
 - `api` is the container used to host the Example API
 - `app` is the container used to query the API and provide a dynamic web page with the results
+- __07/04/2023__ - Chat GPT Optimised
 
 ## API Container
 

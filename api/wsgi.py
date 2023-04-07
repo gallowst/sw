@@ -1,5 +1,5 @@
 import flask, random, json
-from flask import Flask, render_template, Response, jsonify, request
+from flask import Flask, jsonify, request #render_template, Response,
 from jaeger_client import Config
 from flask_opentracing import FlaskTracing
 from os import getenv
@@ -13,13 +13,8 @@ log_level = logging.DEBUG
 logging.getLogger('').handlers = []
 logging.basicConfig(format='%(asctime)s %(message)s', level=log_level)
 # Create configuration object with enabled logging and sampling of all requests.
-config = Config(config={'sampler': {'type': 'const', 'param': 1},
-                        'logging': True,
-                        'local_agent':
-                        # Also, provide a hostname of Jaeger instance to send traces to.
-                        {'reporting_host': JAEGER_HOST}},
-               # Service name can be arbitrary string describing this particular web service.
-               service_name="starwars")
+config = Config(config={'sampler': {'type': 'const', 'param': 1}, 'logging': True, 'local_agent': {'reporting_host': JAEGER_HOST}}, service_name="starwars")          
+
 jaeger_tracer = config.initialize_tracer()
 tracing = FlaskTracing(jaeger_tracer)
 
