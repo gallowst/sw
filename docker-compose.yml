@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+   api:
+     image: gallows/sw:api
+     ports:
+       - "5000:5000"
+   app:
+     depends_on:
+       - api
+     image: gallows/sw:app
+     environment:
+       SW_URI: http://+5000
+     ports:
+       - "8080:8080"
