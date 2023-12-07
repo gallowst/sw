@@ -18,16 +18,13 @@ def index():
        response.raise_for_status()
        full = response.json()
 
-       # Set the Logo to Display
-       logo = "lotr.png" if full[0]['movie'] == "The Lord of the Rings" else "starwars.png"
-
        # Generate the web page from the template
        return render_template('starwars.html',
                               quote=full[0]['quote'],
                               character=full[0]['character'],
                               movie=full[0]['movie'],
                               container=socket.gethostname(),
-                              logo=logo)
+                              logo="starwars.png")
    except (KeyError, requests.exceptions.RequestException) as e:
        return str(e), 500
 

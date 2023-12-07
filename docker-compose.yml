@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+   api:
+     image: gallowst.azurecr.io/sw-api
+   app:
+     depends_on:
+       - api
+     image: gallowst.azurecr.io/sw-app
+     environment:
+       SW_URL: api
+     ports:
+       - "8080:8080"
