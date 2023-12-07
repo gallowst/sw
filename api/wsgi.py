@@ -1,22 +1,7 @@
 import flask, random, json
-from flask import Flask, jsonify, request #render_template, Response,
-from jaeger_client import Config
-from flask_opentracing import FlaskTracing
-from os import getenv
-import logging
-
-JAEGER_HOST = getenv('JAEGER_HOST', 'localhost')
+from flask import Flask, render_template, Response, jsonify, request
 
 application = Flask(__name__,)
-
-log_level = logging.DEBUG
-logging.getLogger('').handlers = []
-logging.basicConfig(format='%(asctime)s %(message)s', level=log_level)
-# Create configuration object with enabled logging and sampling of all requests.
-config = Config(config={'sampler': {'type': 'const', 'param': 1}, 'logging': True, 'local_agent': {'reporting_host': JAEGER_HOST}}, service_name="starwars")          
-
-jaeger_tracer = config.initialize_tracer()
-tracing = FlaskTracing(jaeger_tracer)
 
 # Load in the quotes from disk
 with open('quotes.json') as json_file:
@@ -57,7 +42,7 @@ def api_movie():
         for quote in quotes:
             if quote['character'] == character:
                 results.append(quote)
-    
+
     if results:
         # Use the jsonify function from Flask to convert our list of Python dictionaries to the JSON format.
         return jsonify(random.choice(results))
@@ -68,25 +53,21 @@ def api_movie():
         <p><b>Error:</b> No Movie or character provided.</p>
         <p>Please specify a Star Wars character or a Film from the following list:
         <ol>
-          <li>A New Hope</li>
-          <li>The Empire Strikes Back</li>
-          <li>Return of the Jedi</li>
-          <li>The Phantom Menace</li>
-          <li>Revenge of the Sith</li>
-          <li>Attack of the Clones</li>
+          <li>A New Hope</li>
+          <li>The Empire Strikes Back</li>
+          <li>Return of the Jedi</li>
+          <li>The Phantom Menace</li>
+          <li>Revenge of the Sith</li>
+          <li>Attack of the Clones</li>
         </ol></p>
         <p>Get a <a href=/api/v1/resources/random>random</a> quote</p>'''
 
 @application.route('/api/v1/resources/random', methods=['GET'])
-@tracing.trace()
 def api_random():
 
     # Create an empty list for our results
     results = []
-    with jaeger_tracer.start_active_span(
-        'random method') as scope:
-        results.append(random.choice(quotes))
-        scope.span.log_kv({'event': 'generated random trace', 'result': results})
+    results.append(random.choice(quotes))
     return jsonify(results)
 
 if __name__ == "__main__":
