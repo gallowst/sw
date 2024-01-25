@@ -24,7 +24,7 @@ def index():
                               character=full[0]['character'],
                               movie=full[0]['movie'],
                               container=socket.gethostname(),
-                              logo="starwars.png")
+                              logo="starwars.svg")
    except (KeyError, requests.exceptions.RequestException) as e:
        return str(e), 500
 
