@@ -18,6 +18,7 @@ resources:
 variables:
   tag: '$(Build.BuildId)'
   imageName: 'gallows/sw'
+  trivyVersion: '0.50.4'
 
 stages:
 - stage: Build
@@ -61,10 +62,15 @@ stages:
       displayName: Scan
       inputs:
         script: |
-          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy image --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml --no-progress gallows/sw:$(tag)-api
-          cp $PWD/junit-report.xml $(Build.ArtifactStagingDirectory)/junit-api-report.xml
-          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/mnt --rm aquasec/trivy image --severity HIGH,CRITICAL --format template --template "@contrib/junit.tpl" --output /mnt/junit-report.xml --no-progress gallows/sw:$(tag)-app
-          cp $PWD/junit-report.xml $(Build.ArtifactStagingDirectory)/junit-app-report.xml
+          script: |
+            echo "##[group]Starting Trivy Checks"
+            echo "##[debug]Downloading Trivy"
+            wget https://github.com/aquasecurity/trivy/releases/download/v$(trivyVersion)/trivy_$(trivyVersion)_Linux-64bit.tar.gz
+            echo "##[debug]Extracting archive"
+            tar xvzf trivy_$(trivyVersion)_Linux-64bit.tar.gz
+            echo "##[section]Running Trivy scan"
+            $(System.DefaultWorkingDirectory)/trivy image $(imageName) --format template --template "@contrib/junit.tpl" --exit-code 1 > ./trivy-junit.xml
+            echo "##[endgroup]"
 
     - task: PublishTestResults@2
       inputs:
