@@ -69,13 +69,14 @@ stages:
             echo "##[debug]Extracting archive"
             tar xvzf trivy_$(trivyVersion)_Linux-64bit.tar.gz
             echo "##[section]Running Trivy scan"
-            $(System.DefaultWorkingDirectory)/trivy image $(imageName) --format template --template "@contrib/junit.tpl" --exit-code 1 > ./trivy-junit.xml
+            $(System.DefaultWorkingDirectory)/trivy image $(imageName):api --format template --template "@contrib/junit.tpl" --exit-code 1 > ./trivy-api-junit.xml
+            $(System.DefaultWorkingDirectory)/trivy image $(imageName):app --format template --template "@contrib/junit.tpl" --exit-code 1 > ./trivy-app-junit.xml
             echo "##[endgroup]"
 
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: '**/junit-*.xml'
+        testResultsFiles: '**/*-junit.xml'
         mergeTestResults: true
         failTaskOnFailedTests: true
         testRunTitle: 'Trivy'
